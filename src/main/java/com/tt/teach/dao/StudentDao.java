@@ -15,7 +15,8 @@ public interface StudentDao {
     @Select("select * from student where studentNo=#{studentNo} and loginPwd=#{loginPwd}")
     Student doLogin(Student student);
 
-    @Select("SELECT * FROM student")
+    //as的别名要和实体类里面的一样
+    @Select("select student.*,grade.gradeName as gradeName from student,grade where grade.gradeID=student.gradeId")
     List<Student> getStudentList();
 
     @Update("update student set loginPwd=#{loginPwd},studentName=#{studentName},phone=#{phone} where studentNo=#{studentNo}")
