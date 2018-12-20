@@ -89,16 +89,16 @@ public class StudentController extends BaseController {
         Integer stuNo=Integer.parseInt(xuehao);
         String stuName=getRequest().getParameter("stuName");
         String stuPwd=getRequest().getParameter("stuPwd");
-        String phone=getRequest().getParameter("phone");
+        String stuPhone=getRequest().getParameter("stuPhone");
         Student student=new Student();
         student.setStudentNo(stuNo);
         student.setStudentName(stuName);
         student.setLoginPwd(stuPwd);
-        student.setPhone(phone);
+        student.setPhone(stuPhone);
         int result=studentService.updateStudent(student);
         if(result>0){
-            return FORWARD+"/stu/student";
+            return "/student/student";
         }
-        return FORWARD+"/stu/student";
+        return "/student/student";
     }
 }
