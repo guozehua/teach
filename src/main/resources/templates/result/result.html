@@ -32,61 +32,66 @@
 
 </head>
 <body>
+<!--1.工具类-->
 <div class="placeholder hd">
         <span class="setIcon pull-right">
-                    <button class=" btn btn-primary " data-toggle='modal' data-target='#myModal' type="button" id="add"><span class="fa fa-add"></span>&nbsp;成绩录入</button>
-                    <button class=" btn btn-primary " type="button" id="save"><span class="fa fa-save"></span>&nbsp;保存</button>
-                    <button class=" btn btn-primary " type="button" id="edit"><span class="fa fa-edit"></span>&nbsp;编辑</button>
+                    <button class=" btn btn-primary " data-toggle='modal' data-target='#myModal' type="button" id="add"><span
+                            class="fa fa-add"></span>&nbsp;成绩录入</button>
+                    <button class=" btn btn-primary " type="button" id="save"><span
+                            class="fa fa-save"></span>&nbsp;保存</button>
+                    <button class=" btn btn-primary " type="button" id="edit"><span
+                            class="fa fa-edit"></span>&nbsp;编辑</button>
                     <button class=" btn btn-primary " type="button" id="cancel"><span class="fa fa-arrow-left"></span>&nbsp;取消编辑</button>
                     <button class=" btn btn-primary " type="button" id="del"><span class="fa fa-remove"></span>&nbsp;删除</button>
         </span>
 </div>
-    <table id="table_result" data-height="360" data-toggle="table">
+<!--2.空的table-->
+<table id="table_result" data-height="360" data-toggle="table">
 
 
-    </table>
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        &times;
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel">
-                        添加
-                    </h4>
-                </div>
-                <div class="modal-body">
-                    <form name="placeResult" >
-                        <input type="hidden" value="" id="bhId">
-                        <div class="form-group">
-                            <label for="studentNo">学号</label>
-                            <span id="stuNo"></span>
-                            <input type="text" class="form-control" id="studentNo" placeholder="学号" required >
-                        </div>
-                        <div class="form-group">
-                            <label for="subjectNo">课程编号</label>
-                            <input type="text" class="form-control" id="subjectNo" placeholder="课程编号" required >
-                        </div>
-                        <div class="form-group">
-                            <label for="examDate">考试时间</label>
-                           <input type="text" class="form-control" id="examDate" placeholder="考试时间" required >
-                        </div>
-                        <div class="form-group">
-                            <label for="studentResult">学生成绩</label>
-                            <input type="text" class="form-control" id="studentResult" placeholder="学生成绩" required>
-                        </div>
-                        <button type="button" class="btn btn-primary" id="addResult">录入</button>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                    </button>
-                </div>
+</table>
+<!--3.隐藏的弹出框-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    添加
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form name="placeResult">
+                    <input type="hidden" value="" id="bhId">
+                    <div class="form-group">
+                        <label for="studentNo">学号</label>
+                        <span id="stuNo"></span>
+                        <input type="text" class="form-control" id="studentNo" placeholder="学号" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subjectNo">课程编号</label>
+                        <input type="text" class="form-control" id="subjectNo" placeholder="课程编号" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="examDate">考试时间</label>
+                        <input type="text" class="form-control" id="examDate" placeholder="考试时间" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentResult">学生成绩</label>
+                        <input type="text" class="form-control" id="studentResult" placeholder="学生成绩" required>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="addResult">录入</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
             </div>
         </div>
     </div>
-
+</div>
 
 </body>
 
@@ -104,22 +109,74 @@
 <script th:src="@{/static/js/lib/ie10-viewport-bug-workaround.js}"></script>
 <!--1.使用bootstrapTable将json数据渲染到页面-->
 <script>
+    function findResfn() {
+        $("#table_result").bootstrapTable({
+                url: "/res/getResultList",
+                type: "GET",
+                dataType: "json",
+                pagination: true,            //是否进行分页
+                search: true,                //是否有搜索框
+                showRefresh: true,          //是否有刷新按钮
+                pageSize: 5,                 //初始化每页显示几条数据
+                pageList: [1, 2, 3, 4, 5],        //每页显示数据的选择
+                columns: [
+                    {
+                        field: "resultNo",
+                        title: "成绩编号",
+                        align: "center",
+                        valign: "middle",
+                        searchable: true
+                    },
+                    {
+                        field: "subjectName",
+                        title: "科目",
+                        align: "center",
+                        valign: "middle",
+                        searchable: true
+                    }, {
+                        field: "studentResult",
+                        title: "成绩",
+                        align: "center",
+                        valign: "middle",
+                        searchable: true
+                    },
+                    {
+                        field: "studentName",
+                        title: "学生名称",
+                        align: "center",
+                        valign: "middle",
+                        searchable: true
+                    },
+                    {
+                        field: "examDate",
+                        title: "成绩时间",
+                        align: "center",
+                        valign: "middle",
+                        searchable: true
+                    }
+                ]
 
+
+            }
+        )
+    }
+
+    findResfn();
 
 </script>
 <!--2.关于表格点击每一行tr背景颜色的变化。添加了一个class——》tr_new，后面的操作全是通过这个class取获取主键进行操作的-->
 <script>
-   
+
 </script>
 
 <!--3.对添加，保存，编辑，取消编辑，删除，全部删除进行对应的操作-->
 <script>
-   
+
 </script>
 <script>
 
 </script>
 <style type="text/css">
-   
+
 </style>
 </html>
