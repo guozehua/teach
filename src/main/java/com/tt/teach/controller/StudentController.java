@@ -45,6 +45,19 @@ public class StudentController extends BaseController {
         }
         return REDIRECT+"/stu/login";
     }
+//ajax异步请求
+    @RequestMapping(value = "/getStuByNo/{studentNo}",method = RequestMethod.GET)
+    @ResponseBody
+    public Object getStuByNo(@PathVariable Integer studentNo) {
+        Student student=studentService.getStuByNo(studentNo);
+        if(student!=null){
+            return JsonResult.ok("有该学生",student);
+        }
+        return JsonResult.no("没有该学生",student);
+    }
+
+
+
 
     @RequestMapping(value = "/student",method = RequestMethod.GET)
     public String student() {
@@ -101,4 +114,8 @@ public class StudentController extends BaseController {
         }
         return "/student/student";
     }
+
+
+
+
 }
