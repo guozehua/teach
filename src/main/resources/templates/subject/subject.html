@@ -29,7 +29,7 @@
 
 </head>
 <body>
-<div class="placeholder hd">
+   <div class="placeholder hd">
         <span class="setIcon pull-right">
                     <button class=" btn btn-primary " data-toggle='modal' data-target='#myModal' type="button" id="add"><span class="fa fa-add"></span>&nbsp;课程录入</button>
                     <button class=" btn btn-primary " type="button" id="save"><span class="fa fa-save"></span>&nbsp;保存</button>
@@ -98,7 +98,49 @@
 <script th:src="@{/static/js/lib/ie10-viewport-bug-workaround.js}"></script>
 <!--1.使用bootstrapTable将json数据渲染到页面-->
 <script>
-   
+    function findSubfn() {
+        $("#table_subject").bootstrapTable({
+            url:"/sub/getSubList",
+            type:"get",
+            dataType:"json",
+            pagination:true,
+            search:true,
+            showRefresh:true,
+            pageSize:5,
+            pageList:[1,2,3,4,5],
+            columns:[{
+                field:"subjectNo",
+                title:"科目编号",
+                align:"center",
+                valign:"middle",
+                searchable:true
+            },{
+                field:"subjectName",
+                title:"科目名称",
+                align:"center",
+                valign:"middle",
+                searchable:true
+            },{
+                field:"classHour",
+                title:"科目时长",
+                align:"center",
+                valign:"middle",
+                searchable:true
+            },{
+                field:"gradeName",
+                title:"年级",
+                align:"center",
+                valign:"middle",
+                searchable:true
+            }
+            ]
+
+            }
+        )
+    }
+
+    findSubfn();
+
 </script>
 <!--2.关于表格点击每一行tr背景颜色的变化。添加了一个class——》tr_new，后面的操作全是通过这个class取获取主键进行操作的-->
 <script>
