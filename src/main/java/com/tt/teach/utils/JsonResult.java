@@ -1,5 +1,9 @@
 package com.tt.teach.utils;
-
+/**
+*@作者：guozehua
+*@时间：2018/12/21 19:34
+*@描述：
+*/
 public class JsonResult {
     //响应状态码
     private Integer status;

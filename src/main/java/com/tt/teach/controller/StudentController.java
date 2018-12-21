@@ -16,10 +16,9 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
-*  @作者：xuyun 
-*  @时间：2018/12/20 9:23
-*  @描述：
-*
+*@作者：guozehua
+*@时间：2018/12/21 19:32
+*@描述：
 */
 @Controller
 @RequestMapping("/stu")

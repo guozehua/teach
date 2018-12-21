@@ -7,7 +7,11 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+/**
+*@作者：guozehua
+*@时间：2018/12/21 19:32
+*@描述：
+*/
 @Mapper
 @Repository
 public interface ResultDao {

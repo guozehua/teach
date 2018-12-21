@@ -8,7 +8,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
-
+/**
+*@作者：guozehua
+*@时间：2018/12/21 19:33
+*@描述：
+*/
 @Service
 public class StudentServiceImpl implements StudentService {
    @Resource

@@ -10,10 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
-*  @作者：xuyun
-*  @时间：2018/12/19 16:15
-*  @描述：控制器的工具类
-*
+*@作者：guozehua
+*@时间：2018/12/21 19:34
+*@描述：
 */
 public class BaseController {
     //1.进行日志打印

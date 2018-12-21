@@ -11,7 +11,11 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.List;
-
+/**
+*@作者：guozehua
+*@时间：2018/12/21 19:32
+*@描述：
+*/
 @Controller
 @RequestMapping("/res")
 public class ResultController {
